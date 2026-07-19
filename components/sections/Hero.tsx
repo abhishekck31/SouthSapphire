@@ -1,5 +1,8 @@
+import Link from "next/link";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
+import { TextReveal } from "@/components/ui/TextReveal";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Marquee } from "@/components/ui/Marquee";
 import { cn } from "@/lib/utils";
 
@@ -18,10 +21,12 @@ export function Hero() {
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.2} className="max-w-5xl">
-          <h1 className="heading-xl font-serif leading-[1.1] mb-8">
-            We connect the internet&apos;s most trusted voices with the world&apos;s boldest brands.
-          </h1>
+        <FadeUp delay={0.1}>
+          <TextReveal 
+            text="Where Influence Meets Precision."
+            as="h1"
+            className="font-serif text-6xl md:text-8xl lg:text-[110px] max-w-5xl leading-[0.95]"
+          />
         </FadeUp>
 
         <FadeUp delay={0.3}>
@@ -30,13 +35,21 @@ export function Hero() {
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.4} className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
-          <Button variant="white" pill className="w-full sm:w-auto">
-            Explore Our Talent
-          </Button>
-          <Button variant="outline-white" pill className="w-full sm:w-auto">
-            For Brands
-          </Button>
+        <FadeUp delay={0.4} className="mt-12 flex gap-4 flex-wrap z-10 relative">
+          <Link href="/contact">
+            <MagneticButton>
+              <Button variant="primary" pill>
+                Work With Us
+              </Button>
+            </MagneticButton>
+          </Link>
+          <Link href="/work">
+            <MagneticButton>
+              <Button variant="secondary" pill>
+                View Case Studies
+              </Button>
+            </MagneticButton>
+          </Link>
         </FadeUp>
       </div>
 
