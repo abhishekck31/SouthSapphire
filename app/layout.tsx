@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -31,6 +32,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ScrollProgressBar />
         <Navbar />
         {children}
         <Footer />
