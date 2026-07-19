@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar darkHero={true} />
+        <Navbar />
         {children}
         <Footer />
       </body>

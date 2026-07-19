@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -16,13 +17,15 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-interface NavbarProps {
-  darkHero?: boolean;
-}
+// Pages whose hero section is dark — navbar starts with white text
+const DARK_HERO_ROUTES = new Set(["/", "/talent", "/about", "/contact"]);
 
-export function Navbar({ darkHero = false }: NavbarProps) {
+export function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const darkHero = DARK_HERO_ROUTES.has(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,35 +33,40 @@ export function Navbar({ darkHero = false }: NavbarProps) {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Initial check
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isWhiteBg = isScrolled;
-  const textColorClass = darkHero && !isScrolled ? "text-brand-white" : "text-brand-black";
+  const textColorClass =
+    darkHero && !isScrolled ? "text-brand-white" : "text-brand-black";
 
   return (
     <>
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-colors duration-300",
-          isWhiteBg ? "bg-brand-white border-b border-brand-gray-mid" : "bg-transparent",
+          isWhiteBg
+            ? "bg-brand-white border-b border-brand-gray-mid"
+            : "bg-transparent",
           textColorClass
         )}
       >
         <div className="max-w-[1280px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
           {/* Left: Wordmark */}
-          <Link href="/" className="font-serif tracking-widest text-lg md:text-xl uppercase z-50">
+          <Link
+            href="/"
+            className="font-serif tracking-widest text-lg md:text-xl uppercase z-50"
+          >
             STUDIO/M
           </Link>
 
           {/* Center/Right: Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <Link 
-                key={link.label} 
+              <Link
+                key={link.label}
                 href={link.href}
                 className="font-medium text-sm transition-opacity hover:opacity-60"
               >
@@ -70,20 +78,20 @@ export function Navbar({ darkHero = false }: NavbarProps) {
           {/* Far Right: CTA Button (Desktop) & Hamburger (Mobile) */}
           <div className="flex items-center gap-4">
             <div className="hidden md:block">
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 pill
                 className={cn(
-                  darkHero && !isScrolled 
-                    ? "bg-brand-white text-brand-black hover:bg-brand-gray-light" 
-                    : ""
+                  darkHero && !isScrolled
+                    ? "bg-brand-white text-brand-black hover:bg-brand-gray-light"
+                    : "bg-brand-black text-brand-white hover:bg-black/90"
                 )}
               >
                 Start a Project
               </Button>
             </div>
-            
-            <button 
+
+            <button
               className="md:hidden p-2 -mr-2 z-50"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
@@ -94,10 +102,10 @@ export function Navbar({ darkHero = false }: NavbarProps) {
         </div>
       </header>
 
-      <MobileMenu 
-        isOpen={isMobileMenuOpen} 
-        onClose={() => setIsMobileMenuOpen(false)} 
-        links={NAV_LINKS} 
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        links={NAV_LINKS}
       />
     </>
   );
