@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ArrowRight, TrendingUp, Users, Target, BarChart3 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: "50M+", label: "Combined Creator Reach" },
-  { value: "120+", label: "Brand Campaigns Delivered" },
-  { value: "98%", label: "Client Satisfaction Rate" },
-  { value: "30+", label: "Creators Under Management" },
+  { target: 50, suffix: "M+", label: "Combined Creator Reach" },
+  { target: 120, suffix: "+", label: "Brand Campaigns Delivered" },
+  { target: 98, suffix: "%", label: "Client Satisfaction Rate" },
+  { target: 30, suffix: "+", label: "Creators Under Management" },
 ];
 
 const SERVICES = [
@@ -109,9 +110,11 @@ export default function ForBrandsPage() {
           {STATS.map((stat, i) => (
             <FadeUp key={stat.label} delay={i * 0.1}>
               <div className="flex flex-col gap-2">
-                <span className="font-serif text-4xl md:text-5xl text-brand-white">
-                  {stat.value}
-                </span>
+                <AnimatedCounter 
+                  target={stat.target} 
+                  suffix={stat.suffix} 
+                  className="font-serif text-4xl md:text-5xl text-brand-white" 
+                />
                 <span className="text-xs font-semibold tracking-[0.15em] text-brand-gray-dark uppercase">
                   {stat.label}
                 </span>
