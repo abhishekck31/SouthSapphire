@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative flex flex-col min-h-screen bg-brand-black text-brand-white pt-20 overflow-hidden">
+    <section className="grain relative flex flex-col min-h-screen bg-brand-black text-brand-white pt-20 overflow-hidden">
       {/* Background (Placeholder for future duotone image) */}
       <div className="absolute inset-0 bg-brand-black z-0 pointer-events-none"></div>
 
