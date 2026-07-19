@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { FaInstagram, FaYoutube } from "react-icons/fa6";
 
 export const metadata: Metadata = {
@@ -109,7 +110,7 @@ export default function TalentPage() {
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {TALENT.map((talent, i) => (
             <FadeUp key={talent.name} delay={i * 0.07}>
-              <div
+              <TiltCard
                 className={`group relative aspect-[3/4] rounded-[4px] overflow-hidden cursor-pointer ${talent.bg}`}
               >
                 {/* Gradient overlay */}
@@ -143,7 +144,7 @@ export default function TalentPage() {
                     View Profile
                   </span>
                 </div>
-              </div>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>
