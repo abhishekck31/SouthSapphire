@@ -1,6 +1,6 @@
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
-import { Instagram, Youtube } from "lucide-react";
+import { FaInstagram, FaYoutube } from "react-icons/fa6";
 
 const TALENT = [
   {
@@ -79,12 +79,12 @@ export function FeaturedTalent() {
                 {/* Stats Row */}
                 <div className="flex items-center gap-4 text-sm font-medium">
                   <div className="flex items-center gap-1.5">
-                    <Instagram className="w-4 h-4" />
+                    <FaInstagram className="w-4 h-4" />
                     <span>{talent.instagram}</span>
                   </div>
                   <span className="opacity-50">·</span>
                   <div className="flex items-center gap-1.5">
-                    <Youtube className="w-4 h-4" />
+                    <FaYoutube className="w-4 h-4" />
                     <span>{talent.youtube}</span>
                   </div>
                 </div>

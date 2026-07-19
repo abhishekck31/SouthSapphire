@@ -24,25 +24,27 @@ export function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) {
     };
   }, [isOpen]);
 
+  const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
   const menuVariants = {
     closed: {
       opacity: 0,
-      transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.3, ease: EASE }
     },
     open: {
       opacity: 1,
-      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.4, ease: EASE }
     }
   };
 
   const containerVariants = {
-    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 as const } },
     open: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
   };
 
   const itemVariants = {
-    closed: { opacity: 0, y: 20, transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } },
-    open: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+    closed: { opacity: 0, y: 20, transition: { duration: 0.3, ease: EASE } },
+    open: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } }
   };
 
   return (
