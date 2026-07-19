@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "About — STUDIO/M",
@@ -101,16 +102,20 @@ export default function AboutPage() {
           <FadeUp delay={0.2}>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { v: "2021", l: "Founded" },
-                { v: "30+", l: "Creators Managed" },
-                { v: "120+", l: "Campaigns Delivered" },
-                { v: "50M+", l: "Combined Creator Reach" },
+                { t: 2021, s: "", l: "Founded" },
+                { t: 30, s: "+", l: "Creators Managed" },
+                { t: 120, s: "+", l: "Campaigns Delivered" },
+                { t: 50, s: "M+", l: "Combined Creator Reach" },
               ].map((item) => (
                 <div
                   key={item.l}
                   className="bg-brand-white border border-brand-gray-mid rounded-[4px] p-8 flex flex-col gap-2"
                 >
-                  <span className="font-serif text-4xl text-brand-black">{item.v}</span>
+                  <AnimatedCounter 
+                    target={item.t} 
+                    suffix={item.s} 
+                    className="font-serif text-4xl text-brand-black" 
+                  />
                   <span className="text-xs font-semibold tracking-[0.15em] text-brand-gray-dark uppercase">
                     {item.l}
                   </span>
