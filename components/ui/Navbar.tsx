@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -64,15 +65,25 @@ export function Navbar() {
 
           {/* Center/Right: Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="font-medium text-sm transition-opacity hover:opacity-60"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="relative font-medium text-sm transition-opacity hover:opacity-60 py-1"
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-active"
+                      className="absolute -bottom-0.5 left-0 right-0 h-px bg-current"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Far Right: CTA Button (Desktop) & Hamburger (Mobile) */}
