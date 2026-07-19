@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa6";
 
+import { MagneticButton } from "@/components/ui/MagneticButton";
+
 const FOOTER_LINKS = [
   { label: "Talent", href: "/talent" },
   { label: "For Brands", href: "/for-brands" },
@@ -54,16 +56,17 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4 mt-2">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="text-brand-gray-dark hover:text-brand-white transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
+                <MagneticButton key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex items-center justify-center p-2 text-brand-gray-dark hover:text-brand-white transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                </MagneticButton>
               ))}
             </div>
           </motion.div>
