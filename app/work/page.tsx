@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FadeUp } from "@/components/ui/FadeUp";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export const metadata: Metadata = {
   title: "Our Work — STUDIO/M",
@@ -95,7 +96,7 @@ export default function WorkPage() {
         <div className="max-w-[1280px] mx-auto columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
           {CASES.map((c, i) => (
             <FadeUp key={c.brand} delay={i * 0.07} className="break-inside-avoid">
-              <div className={`group relative ${c.aspect} rounded-[4px] overflow-hidden cursor-pointer ${c.bg}`}>
+              <TiltCard className={`group relative ${c.aspect} rounded-[4px] overflow-hidden cursor-pointer ${c.bg}`}>
                 {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/10 to-transparent" />
 
@@ -120,7 +121,7 @@ export default function WorkPage() {
                     {c.result}
                   </p>
                 </div>
-              </div>
+              </TiltCard>
             </FadeUp>
           ))}
         </div>
