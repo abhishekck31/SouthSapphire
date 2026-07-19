@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa6";
 
@@ -22,10 +25,24 @@ export function Footer() {
   return (
     <footer className="w-full bg-brand-black text-brand-white border-t border-brand-white/10">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10% 0px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
           {/* Column 1: Brand */}
-          <div className="flex flex-col gap-4">
+          <motion.div
+            className="flex flex-col gap-4"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+            }}
+          >
             <Link
               href="/"
               className="font-serif tracking-widest text-xl uppercase inline-block hover:opacity-70 transition-opacity"
@@ -49,10 +66,16 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2: Navigation */}
-          <div className="flex flex-col gap-3">
+          <motion.div
+            className="flex flex-col gap-3"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+            }}
+          >
             <p className="text-[10px] font-semibold tracking-[0.2em] text-brand-gray-dark uppercase mb-2">
               Navigation
             </p>
@@ -65,10 +88,16 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
-          </div>
+          </motion.div>
 
           {/* Column 3: Contact */}
-          <div className="flex flex-col gap-3">
+          <motion.div
+            className="flex flex-col gap-3"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+            }}
+          >
             <p className="text-[10px] font-semibold tracking-[0.2em] text-brand-gray-dark uppercase mb-2">
               Get in Touch
             </p>
@@ -87,9 +116,9 @@ export function Footer() {
             <p className="text-sm text-brand-gray-dark mt-2">
               Bengaluru, Karnataka<br />India — 560001
             </p>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-brand-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
