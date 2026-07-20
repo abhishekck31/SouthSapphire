@@ -5,6 +5,7 @@ import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import { CursorGlow } from "@/components/ui/CursorGlow";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <BackToTop />
       </body>
     </html>
   );
