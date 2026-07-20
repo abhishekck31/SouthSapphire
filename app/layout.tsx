@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "STUDIO/M — Influencer Management & Brand Partnerships",
   description:
     "Bengaluru's premier influencer management agency. Connecting top-tier creators with the world's boldest brands.",
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({
